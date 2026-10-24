@@ -1,57 +1,122 @@
+/**
+ * ╔══════════════════════════════════════════╗
+ * ║            💠 GOD BOT OWNER 💠            ║
+ * ║          HRIDOY HASAN SHANTO              ║
+ * ╚══════════════════════════════════════════╝
+ */
+
 const fs = require("fs-extra");
-const request = require("request");
+const axios = require("axios");
 const path = require("path");
 
 module.exports = {
   config: {
     name: "owner",
-    version: "1.3.0",
-    author: "Mᴏʜᴀᴍᴍᴀᴅ Aᴋᴀsʜ",
+    version: "2.0.0",
+    author: "💠 HRIDOY HASAN SHANTO 💠",
     role: 0,
-    shortDescription: "Owner information with image",
+    countDown: 5,
+    shortDescription: "Bot owner information",
+    longDescription: "Displays bot owner information with a photo.",
     category: "Information",
-    guide: {
-      en: "owner"
-    }
+    guide: "{pn}"
   },
 
   onStart: async function ({ api, event }) {
-    const ownerText = 
-`╭─ 👑 Oᴡɴᴇʀ Iɴғᴏ 👑 ─╮
-│ 👤 Nᴀᴍᴇ       : Mᴏʜᴀᴍᴍᴀᴅ Aᴋᴀsʜ
-│ 🧸 Nɪᴄᴋ       : Aᴋᴀsʜ
-│ 🎂 Aɢᴇ        : 18+
-│ 💘 Rᴇʟᴀᴛɪᴏɴ : Sɪɴɢʟᴇ
-│ 🎓 Pʀᴏғᴇssɪᴏɴ : Sᴛᴜᴅᴇɴᴛ
-│ 📚 Eᴅᴜᴄᴀᴛɪᴏɴ : Iɴᴛᴇʀ 2ɴᴅ Yᴇᴀʀ
-│ 🏡 Lᴏᴄᴀᴛɪᴏɴ : 𝐃𝐡𝐚𝐤𝐚 - 𝐆𝐚𝐳𝐢𝐩𝐮𝐫
-├─ 🔗 Cᴏɴᴛᴀᴄᴛ ─╮
-│ 📘 Facebook  : fb.com/akashx404 
-│ 💬 Messenger: m.me/akashx404 
-│ 📞 WhatsApp  : wa.me/01933165880
-╰────────────────╯`;
+    const ownerText = `
+╭━━━〔 💠 OWNER INFO 💠 〕━━━╮
+┃
+┃ 👑 Name: হৃদয় হাসান শান্ত
+┃ 💠 Nickname: HRIDOY
+┃ 💘 Relationship: Single
+┃ 🎓 Profession: Student
+┃ 🏡 Home District: Bogura, Bangladesh
+┃ 🌏 Current Country: Malaysia
+┃
+┣━━━〔 🔗 CONTACT 〕━━━┫
+┃ 📘 Facebook:
+┃ https://www.facebook.com/
+┃
+┃ 💬 Messenger:
+┃ https://www.messenger.com/
+┃
+╰━━━━━━━━━━━━━━━━━━━━━━╯
+
+💠 BOT DEVELOPER
+HRIDOY HASAN SHANTO
+`;
 
     const cacheDir = path.join(__dirname, "cache");
     const imgPath = path.join(cacheDir, "owner.jpg");
 
-    if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir);
+    try {
+      await fs.ensureDir(cacheDir);
 
-    const imgLink = "https://i.imgur.com/1G4ZhU7.jpeg";
+      // ছবি ডাউনলোডের লিংক
+      const imgLink = "https://i.imgur.com/1G4ZhU7.jpeg";
 
-    const send = () => {
-      api.sendMessage(
-        {
-          body: ownerText,
-          attachment: fs.createReadStream(imgPath)
-        },
+      let imageBuffer = null;
+
+      try {
+        const response = await axios.get(imgLink, {
+          responseType: "arraybuffer",
+          timeout: 10000,
+          maxContentLength: 8 * 1024 * 1024
+        });
+
+        const contentType =
+          response.headers["content-type"] || "";
+
+        if (contentType.startsWith("image/")) {
+          imageBuffer = Buffer.from(response.data);
+          await fs.writeFile(imgPath, imageBuffer);
+        }
+      } catch (imageError) {
+        console.error(
+          "[OWNER IMAGE ERROR]",
+          imageError.message
+        );
+      }
+
+      // ছবি থাকলে ছবিসহ, না থাকলে শুধু টেক্সট
+      if (imageBuffer && await fs.pathExists(imgPath)) {
+        return api.sendMessage(
+          {
+            body: ownerText,
+            attachment: fs.createReadStream(imgPath)
+          },
+          event.threadID,
+          err => {
+            if (err) {
+              console.error("[OWNER SEND ERROR]", err);
+            }
+
+            fs.remove(imgPath).catch(() => {});
+          },
+          event.messageID
+        );
+      }
+
+      return api.sendMessage(
+        ownerText,
         event.threadID,
-        () => fs.unlinkSync(imgPath),
+        err => {
+          if (err) {
+            console.error("[OWNER SEND ERROR]", err);
+          }
+        },
         event.messageID
       );
-    };
 
-    request(encodeURI(imgLink))
-      .pipe(fs.createWriteStream(imgPath))
-      .on("close", send);
+    } catch (error) {
+      console.error("[OWNER COMMAND ERROR]", error);
+
+      return api.sendMessage(
+        "❌ Owner information পাঠাতে সমস্যা হয়েছে।",
+        event.threadID,
+        undefined,
+        event.messageID
+      );
+    }
   }
 };
