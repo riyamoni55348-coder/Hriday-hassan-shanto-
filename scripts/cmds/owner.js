@@ -1,121 +1,182 @@
-/**
- * ╔══════════════════════════════════════════╗
- * ║            💠 GOD BOT OWNER 💠            ║
- * ║          HRIDOY HASAN SHANTO              ║
- * ╚══════════════════════════════════════════╝
- */
 
-const fs = require("fs-extra");
+const moment = require("moment-timezone");
 const axios = require("axios");
+const fs = require("fs-extra");
 const path = require("path");
+
+// ===== AUTHOR =====
+const LOCKED_AUTHOR = "HRIDOY HASAN SHANTO";
 
 module.exports = {
   config: {
     name: "owner",
-    version: "2.0.0",
-    author: "💠 HRIDOY HASAN SHANTO 💠",
+    aliases: ["admin", "intro", "contact"],
+    version: "4.1.0",
+    author: LOCKED_AUTHOR,
     role: 0,
     countDown: 5,
-    shortDescription: "Bot owner information",
-    longDescription: "Displays bot owner information with a photo.",
-    category: "Information",
-    guide: "{pn}"
+    shortDescription: {
+      en: "Owner Information"
+    },
+    description: {
+      en: "Owner and bot information panel"
+    },
+    category: "owner"
   },
 
-  onStart: async function ({ api, event }) {
-    const ownerText = `
-╭━━━〔 💠 OWNER INFO 💠 〕━━━╮
-┃
-┃ 👑 Name: হৃদয় হাসান শান্ত
-┃ 💠 Nickname: HRIDOY
-┃ 💘 Relationship: Single
-┃ 🎓 Profession: Student
-┃ 🏡 Home District: Bogura, Bangladesh
-┃ 🌏 Current Country: Malaysia
-┃
-┣━━━〔 🔗 CONTACT 〕━━━┫
-┃ 📘 Facebook:
-┃ https://www.facebook.com/
-┃
-┃ 💬 Messenger:
-┃ https://www.messenger.com/
-┃
-╰━━━━━━━━━━━━━━━━━━━━━━╯
-
-💠 BOT DEVELOPER
-HRIDOY HASAN SHANTO
-`;
-
-    const cacheDir = path.join(__dirname, "cache");
-    const imgPath = path.join(cacheDir, "owner.jpg");
-
+  onStart: async function ({
+    api,
+    event,
+    usersData,
+    threadsData,
+    message
+  }) {
     try {
+      // ===== AUTHOR CHECK =====
+      if (module.exports.config.author !== LOCKED_AUTHOR) {
+        return message.reply(
+          "⛔ Author modified! This command is disabled."
+        );
+      }
+
+      // ===== OWNER INFORMATION =====
+      const ownerName = "Šħẫňto Hřiȡẫy Ħẫššẫň";
+      const ownerReligion = "ISLAM";
+      const ownerRelation = "SINGLE";
+      const ownerAddress = "MALAYSIA";
+      const ownerAge = "20";
+
+      // ===== CONTACT =====
+      const facebook = "fb.com/MR.MUNNA.220";
+      const whatsapp = "wa.me/601116710390";
+      const telegram = "t.me/DEVIL_FARHAN_420";
+      const youtube = "yb.com/@munna-vai-mbs";
+
+      // ===== BOT INFORMATION =====
+      const botName =
+        global.GoatBot?.config?.nickNameBot || "HRIDOY BOT";
+
+      const prefix =
+        global.GoatBot?.config?.prefix || "/";
+
+      const totalCommands =
+        global.GoatBot?.commands?.size || 0;
+
+      // ===== USERS & GROUPS =====
+      const allUsers = await usersData.getAll();
+      const allThreads = await threadsData.getAll();
+
+      const totalUsers = allUsers.length;
+      const totalGroups = allThreads.length;
+
+      // ===== UPTIME =====
+      const uptime = process.uptime();
+
+      const days = Math.floor(uptime / 86400);
+      const hours = Math.floor((uptime % 86400) / 3600);
+      const minutes = Math.floor((uptime % 3600) / 60);
+      const seconds = Math.floor(uptime % 60);
+
+      const uptimeText =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      // ===== DATE & TIME =====
+      const now = moment().tz("Asia/Kuala_Lumpur");
+      const time = now.format("hh:mm:ss A");
+      const date = now.format("DD/MM/YYYY");
+
+      // ===== CACHE DIRECTORY =====
+      const cacheDir = path.join(__dirname, "cache");
       await fs.ensureDir(cacheDir);
 
-      // ছবি ডাউনলোডের লিংক
-      const imgLink = "https://i.imgur.com/1G4ZhU7.jpeg";
+      const videoPath = path.join(cacheDir, "owner.mp4");
+      const videoUrl = "https://files.catbox.moe/wzosnu.mp4";
 
-      let imageBuffer = null;
+      // ===== DOWNLOAD VIDEO =====
+      const response = await axios({
+        url: videoUrl,
+        method: "GET",
+        responseType: "stream",
+        timeout: 30000
+      });
 
+      const writer = fs.createWriteStream(videoPath);
+      response.data.pipe(writer);
+
+      await new Promise((resolve, reject) => {
+        writer.on("finish", resolve);
+        writer.on("error", reject);
+        response.data.on("error", reject);
+      });
+
+      // ===== OWNER PANEL MESSAGE =====
+      const msg = `
+╔═══✦════════════✦═══╗
+║ 👑 𝐎𝐖𝐍𝐄𝐑 𝐏𝐀𝐍𝐄𝐋 👑 ║
+╚═══✦════════════✦═══╝
+
+┏━━━━━━━━━━━━━━━━━━┓
+┃ 👑 NAME: ${ownerName}
+┃ 🕌 RELIGION: ${ownerReligion}
+┃ 💞 RELATION: ${ownerRelation}
+┃ 🌏 LOCATION: ${ownerAddress}
+┃ 🎂 AGE: ${ownerAge}
+┃ 🟢 ACTIVE: 24/7
+┗━━━━━━━━━━━━━━━━━━┛
+
+╭──── 📱 CONTACT ME ────╮
+│ 🌐 FACEBOOK
+│ └─ ${facebook}
+│ 💬 WHATSAPP
+│ └─ ${whatsapp}
+│ ✈️ TELEGRAM
+│ └─ ${telegram}
+│ ▶️ YOUTUBE
+│ └─ ${youtube}
+╰──────────────────────╯
+
+╭───── 🤖 BOT DETAILS ─────╮
+│ ⚡ NAME: ${botName}
+│ 👥 USERS: ${totalUsers}
+│ 💬 GROUPS: ${totalGroups}
+│ 📦 COMMANDS: ${totalCommands}
+│ 🔰 PREFIX: ${prefix}
+╰─────────────────────────╯
+
+╭──────── 🕒 TIME ────────╮
+│ 📅 DATE: ${date}
+│ ⏰ TIME: ${time}
+│ ⏳ UPTIME: ${uptimeText}
+╰────────────────────────╯
+
+╔═══✦════════════✦═══╗
+║ 💠 HRIDOY HASAN SHANTO 💠 ║
+║    THANKS FOR USING    ║
+╚═══✦════════════✦═══╝
+`;
+
+      // ===== SEND MESSAGE + VIDEO =====
       try {
-        const response = await axios.get(imgLink, {
-          responseType: "arraybuffer",
-          timeout: 10000,
-          maxContentLength: 8 * 1024 * 1024
+        await message.reply({
+          body: msg,
+          attachment: fs.createReadStream(videoPath)
         });
-
-        const contentType =
-          response.headers["content-type"] || "";
-
-        if (contentType.startsWith("image/")) {
-          imageBuffer = Buffer.from(response.data);
-          await fs.writeFile(imgPath, imageBuffer);
-        }
-      } catch (imageError) {
-        console.error(
-          "[OWNER IMAGE ERROR]",
-          imageError.message
-        );
-      }
-
-      // ছবি থাকলে ছবিসহ, না থাকলে শুধু টেক্সট
-      if (imageBuffer && await fs.pathExists(imgPath)) {
-        return api.sendMessage(
-          {
-            body: ownerText,
-            attachment: fs.createReadStream(imgPath)
-          },
-          event.threadID,
-          err => {
-            if (err) {
-              console.error("[OWNER SEND ERROR]", err);
-            }
-
-            fs.remove(imgPath).catch(() => {});
-          },
-          event.messageID
-        );
-      }
-
-      return api.sendMessage(
-        ownerText,
-        event.threadID,
-        err => {
-          if (err) {
-            console.error("[OWNER SEND ERROR]", err);
+      } finally {
+        // ===== CLEANUP =====
+        setTimeout(async () => {
+          try {
+            await fs.remove(videoPath);
+          } catch (error) {
+            console.error("Video cleanup error:", error.message);
           }
-        },
-        event.messageID
-      );
+        }, 10000);
+      }
 
-    } catch (error) {
-      console.error("[OWNER COMMAND ERROR]", error);
+    } catch (err) {
+      console.error("Owner command error:", err);
 
-      return api.sendMessage(
-        "❌ Owner information পাঠাতে সমস্যা হয়েছে।",
-        event.threadID,
-        undefined,
-        event.messageID
+      return message.reply(
+        "❌ Owner command error. Check the bot console logs."
       );
     }
   }
