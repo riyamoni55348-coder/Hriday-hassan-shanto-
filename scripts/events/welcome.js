@@ -9,15 +9,14 @@ module.exports = {
   config: {
     name: "welcome",
     version: "8.0",
-    author: "EryXenX",
+    author: "MR_FARHAN",
     category: "events"
   },
 
   langs: {
     en: {
-      defaultWelcomeMessage: "𝗪𝗲𝗹𝗰𝗼𝗺𝗲 {userName} 🎉\n┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄\n✦ Glad to have you here! Enjoy your stay and make great memories 🌸",
-      botAddedMessage:
-        "━━━━━━━━━━━━━━━━━━━\n🤖 ᴛʜᴀɴᴋ ʏᴏᴜ ғᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ ᴛᴏ ᴛʜᴇ ɢʀᴏᴜᴘ! 💖\n\n⚙️ ʙᴏᴛ ᴘʀᴇꜰɪx : /\n📜 ᴛʏᴘᴇ /help ᴛᴏ sᴇᴇ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs\n\n✨ ʟᴇᴛ's ᴍᴀᴋᴇ ᴛʜɪs ɢʀᴏᴜᴘ ᴇᴠᴇɴ ᴍᴏʀᴇ ꜰᴜɴ ᴛᴏɢᴇᴛʜᴇʀ! 😄\n━━━━━━━━━━━━━━━━━━━"
+      defaultWelcomeMessage: "╔══❀═══◄░❀ ░►═══❀══╗\n      ✨ আসসালামু আলাইকুম ✨\n╚══❀═══◄░❀ ░►═══❀══╝\n\n╔═══════════════════╗\n  {threadName} \n╚═══════════════════╝\n☆✼★━━━━━━━━━━━━★✼☆\n\n✹◢█𖣐◣ 💖◢𖣐█◣✹\n✹ █ 𝗪𝗘𝗟𝗖𝗢𝗠𝗘  █ ✹\n ✹◥█𖣐█💛█𖣐█◤✹\n    ✹◥█𖣐💚𖣐█◤✹\n        ✹◥🖤🖤◤✹\n             ✹🔻✹\n                 ✹\n☆✼★━━━━━━━━━━━━★✼☆\n{userTag}\n\nআ্ঁপ্ঁনা্ঁকে্ঁ গ্রু্ঁপে্ঁর্ঁ প্ঁক্ষ্ঁ থে্ঁকে্ঁ জা্ঁনা্ঁই্ঁ   \n ৷৷ 💐 আ্ঁন্ত্ঁরি্ঁক্ঁ স্বা্ঁগ্ঁত্ঁম্ঁ 💐 ।। \n\n🌿 『 𝐀𝐃𝐃𝐄𝐃 𝐁𝐘 』 ➤ {inviterName}\n\n👥 『 𝐌𝐄𝐌𝐁𝐄𝐑 𝐍𝐎 』 ➤「 {memberCount} 」\n\n☆✼★━━━━━━━━━━━━★✼☆\n\n╔══❀═══◄░❀ ░►═══❀══╗\n🌹 এ্ঁক্ঁটি্ঁ গা্ঁছে্ঁ দু্ঁই্ঁটি্ঁ গো্ঁলা্ঁপ্ঁ 🌹\n🌹 এ্ঁক্ঁটি্ঁ গো্ঁলা্ঁপ্ঁ লা্ঁল্ঁ,🌹\n━━━━━━━━━━━━━━━━━━━\n{threadName}\n━━━━━━━━━━━━━━━━━━━\nগ্রু্ঁপে্ঁ আ্ঁপ্ঁনা্ঁর্ঁ ভা্ঁলো্ঁবা্ঁসা্ঁ থা্ঁকু্ঁক্ঁ চি্ঁর্ঁকা্ঁল্ঁ 💞\n╚══❀═══◄░❀ ░►═══❀══╝\n🦋★😘★🦋\n✧🌺✧🌺✧🌺\n\n┊┊┊┊┊┊┊⇣❥\n┊┊┊┊┊┊⇣❥\n┊┊┊┊┊⇣❥\n┊┊┊┊⇣❥\n┊┊┊⇣❥\n┊┊⇣❥\n┊⇣❥\n\n✨ 『 𝐄𝐍𝐉𝐎𝐘 𝐘𝐎𝐔𝐑 𝐒𝐓𝐀𝐘 』 ✨\n🌸 『 𝐒𝐓𝐀𝐘 𝐀𝐂𝐓𝐈𝐕𝐄 』 🌸\n━━━━━━━━━━━━━━━━━━━\n        𓆩»̶̶͓͓͓̽̽̽𝆠꯭፝֟ꜱɪᴢᴜᴋᴀ-ʙᴀʙʏ𝆠꯭፝֟𝆠꯭፝֟𓆪🎀\n━━━━━━━━━━━━━━━━━━━",
+      botAddedMessage:"▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n     ✦ 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗠𝗔𝗚𝗜𝗖 ✦\n💚 𝗔𝗦𝗦𝗔𝗟𝗔𝗠𝗨 𝗔𝗟𝗔𝗜𝗞𝗨𝗠 💚\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n╭──────────────────╮\n🤖 হু হু হু… কে আমাকে এখানে টেনে আনল? 😹\n\n🙈 ওহো! আমি আবার নতুন গ্রুপে ল্যান্ড করলাম!\n╰──────────────────╯\n\n🐒 প্রশ্ন:\n➤ আমাকে এড দিছো কেন?\n➊ দোয়া পড়ার জন্য?\n➋ আমার সাথে শয়তানি করার জন্য?\n➌ নাকি শুধু গ্রুপে গোলমাল করার জন্য? 😄\n━━━━━━━━━━━━━━━━━━━\n💬 আচ্ছা যাই হোক…\nআমি এখন থেকে এই গ্রুপের\n😎 অফিসিয়াল শয়তানি ম্যানেজার!\n━━━━━━━━━━━━━━━━━━━\n📜 যে কোনো কমান্ড জানতে চাইলে?\n/help লেখো...!\n\n⚡ ➤𝗣𝗿𝗲𝗳𝗶𝘅:「 / 」\n━━━━━━━━━━━━━━━━━━━\n⚠️ সতর্কবার্তা:\n\n😹 বেশি হাসলে ফোন পড়ে যেতে পারে\n🐸 বেশি দুষ্টুমি করলে আমি স্ক্রিনশট নিয়ে বসকে দেখাবো!\n━━━━━━━━━━━━━━━━━━━\n👑 𝐎𝐖𝐍𝐄𝐑:\n🥰 𝐑𝐉 𝐅𝐀𝐑𝐇𝐀𝐍 🥰\n\n🌐 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊:\nhttps://www.facebook.com/share/1BCYEVZMZY/\n━━━━━━━━━━━━━━━━━━━\n💚 এখন থেকে আমি থাকবো...\n😎 মজা + ফান + দুষ্টুমি মিক্স করে!\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n     ✦ 𝗘𝗡𝗝𝗢𝗬 𝗧𝗛𝗘 𝗚𝗔𝗠𝗘 ✦\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰"
     }
   },
 
@@ -38,8 +37,26 @@ module.exports = {
       const botID  = api.getCurrentUserID();
 
       if (userID == botID) {
-        if (nickNameBot) await api.changeNickname(nickNameBot, threadID, botID);
-        return message.send(getLang("botAddedMessage", prefix));
+  if (nickNameBot)
+    await api.changeNickname(nickNameBot, threadID, botID);
+
+  const videoUrl = "https://files.catbox.moe/lr37uq.mp4";
+
+  try {
+    const video = await axios({
+      url: videoUrl,
+      method: "GET",
+      responseType: "stream"
+    });
+
+    return message.send({
+      body: getLang("botAddedMessage", prefix),
+      attachment: video.data
+    });
+  } catch (err) {
+    console.log(err);
+    return message.send(getLang("botAddedMessage", prefix));
+  }
       }
 
       const userName    = user.fullName;
@@ -537,17 +554,9 @@ async function createWelcomeCard({
     pGrad.addColorStop(1, 'rgba(46,204,113,1)');
     ctx.fillStyle = pGrad;
     ctx.shadowColor = 'rgba(100,200,255,0.55)'; ctx.shadowBlur = 16;
-    ctx.fillText('Powered By EryXenX', cx, cy + 8);
+    ctx.fillText('Powered By Farhan', cx, cy + 8);
     ctx.restore();
   }
 
   ctx.save();
-  ctx.textAlign = 'right'; ctx.font = '400 14px "Segoe UI", Arial';
-  ctx.fillStyle = 'rgba(255,255,255,0.12)';
-  ctx.fillText('Enjoy your stay ✨', W - 28, H - 20);
-  ctx.restore();
-
-  const tempPath = path.join(__dirname, `temp_welcome_${Date.now()}.png`);
-  await fs.writeFile(tempPath, canvas.toBuffer('image/png'));
-  return tempPath;
-}
+  ctx.textAlign = 'right'
